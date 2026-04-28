@@ -1,0 +1,77 @@
+{
+    "nodes": [
+        "Central_Junction",
+        "North_Station",
+        "River_Bridge",
+        "Police_HQ",
+        "Traffic_Control_Center",
+        "Stadium",
+        "East_Market",
+        "Airport_Road",
+        "City_Hospital",
+        "South_Residential",
+        "West_Terminal",
+        "Fire_Station",
+        "Industrial_Zone"
+    ],
+    "edges": {
+        "Central_Junction": {
+            "North_Station": 3,
+            "East_Market": 3,
+            "South_Residential": 4,
+            "West_Terminal": 4
+        },
+        "North_Station": {
+            "Central_Junction": 3,
+            "River_Bridge": 4,
+            "Traffic_Control_Center": 2
+        },
+        "River_Bridge": {
+            "North_Station": 4,
+            "Police_HQ": 2,
+            "Stadium": 2
+        },
+        "Police_HQ": {
+            "River_Bridge": 2,
+            "Traffic_Control_Center": 2
+        },
+        "Traffic_Control_Center": {
+            "Police_HQ": 2,
+            "North_Station": 2
+        },
+        "Stadium": {
+            "River_Bridge": 2,
+            "East_Market": 2,
+            "Airport_Road": 5
+        },
+        "East_Market": {
+            "Stadium": 2,
+            "Central_Junction": 3,
+            "City_Hospital": 3
+        },
+        "Airport_Road": {
+            "Stadium": 5,
+            "South_Residential": 2
+        },
+        "City_Hospital": {
+            "East_Market": 3,
+            "South_Residential": 6
+        },
+        "South_Residential": {
+            "City_Hospital": 6,
+            "Airport_Road": 2,
+            "Central_Junction": 4
+        },
+        "West_Terminal": {
+            "Central_Junction": 4,
+            "Fire_Station": 2,
+            "Industrial_Zone": 4
+        },
+        "Fire_Station": {
+            "West_Terminal": 2
+        },
+        "Industrial_Zone": {
+            "West_Terminal": 4
+        }
+    }
+}
