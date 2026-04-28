@@ -1,0 +1,124 @@
+{
+    "description": "Traffic policy rules for the Smart City Traffic AI System",
+    "vehicle_types": {
+        "Civilian": {
+            "is_emergency": false,
+            "max_priority": "Normal",
+            "allowed_actions": ["Route_Request"],
+            "forbidden_actions": ["SignalOverride", "EmergencyRoute", "PriorityCorridor"]
+        },
+        "Ambulance": {
+            "is_emergency": true,
+            "max_priority": "Critical",
+            "allowed_actions": ["Route_Request", "SignalOverride", "EmergencyRoute", "PriorityCorridor"],
+            "forbidden_actions": []
+        },
+        "Fire_Truck": {
+            "is_emergency": true,
+            "max_priority": "Critical",
+            "allowed_actions": ["Route_Request", "SignalOverride", "EmergencyRoute", "PriorityCorridor"],
+            "forbidden_actions": []
+        },
+        "Police": {
+            "is_emergency": true,
+            "max_priority": "Critical",
+            "allowed_actions": ["Route_Request", "SignalOverride", "EmergencyRoute", "PriorityCorridor"],
+            "forbidden_actions": []
+        }
+    },
+    "priority_rules": [
+        {
+            "rule_id": "PR-001",
+            "description": "Emergency vehicle with high incident severity gets Critical priority",
+            "condition": {
+                "vehicle_type": "emergency",
+                "incident_severity": "High"
+            },
+            "priority": "Critical"
+        },
+        {
+            "rule_id": "PR-002",
+            "description": "Emergency vehicle with time-sensitive request gets High priority",
+            "condition": {
+                "vehicle_type": "emergency",
+                "time_sensitivity": "High"
+            },
+            "priority": "High"
+        },
+        {
+            "rule_id": "PR-003",
+            "description": "All civilian vehicles get Normal priority",
+            "condition": {
+                "vehicle_type": "Civilian"
+            },
+            "priority": "Normal"
+        }
+    ],
+    "authorization_rules": [
+        {
+            "rule_id": "AR-001",
+            "description": "Emergency vehicles are authorized for signal override",
+            "condition": {
+                "vehicle_type": "emergency",
+                "action": "SignalOverride"
+            },
+            "authorized": true
+        },
+        {
+            "rule_id": "AR-002",
+            "description": "Civilian vehicles are NOT authorized for signal override",
+            "condition": {
+                "vehicle_type": "Civilian",
+                "action": "SignalOverride"
+            },
+            "authorized": false
+        },
+        {
+            "rule_id": "AR-003",
+            "description": "Emergency vehicles heading to hospital get emergency corridor",
+            "condition": {
+                "vehicle_type": "emergency",
+                "destination": "City_Hospital"
+            },
+            "authorized": true,
+            "grants": "EmergencyCorridor"
+        }
+    ],
+    "request_type_rules": [
+        {
+            "rule_id": "RTR-001",
+            "description": "Route requests are always approved",
+            "request_type": "Route_Request",
+            "requires_authorization": false,
+            "default_status": "Approved"
+        },
+        {
+            "rule_id": "RTR-002",
+            "description": "Policy checks require authorization",
+            "request_type": "Policy_Check",
+            "requires_authorization": true
+        },
+        {
+            "rule_id": "RTR-003",
+            "description": "Control allocation requires allowed action",
+            "request_type": "Control_Allocation_Request",
+            "requires_authorization": true,
+            "requires_allowed_action": true
+        },
+        {
+            "rule_id": "RTR-004",
+            "description": "Emergency response requires priority and emergency route authorization",
+            "request_type": "Emergency_Response_Request",
+            "requires_priority": true,
+            "requires_emergency_route": true
+        },
+        {
+            "rule_id": "RTR-005",
+            "description": "Integrated city service requires critical priority and full authorization",
+            "request_type": "Integrated_City_Service_Request",
+            "requires_priority": "Critical",
+            "requires_emergency_route": true,
+            "requires_allowed_action": true
+        }
+    ]
+}
