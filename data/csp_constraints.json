@@ -1,0 +1,79 @@
+{
+    "description": "Constraint Satisfaction Problem for traffic signal control",
+    "variables": {
+        "S1_Central_Junction": {
+            "description": "Signal at Central Junction",
+            "domain": ["PhaseA", "PhaseB", "PhaseC"]
+        },
+        "S2_North_Station": {
+            "description": "Signal at North Station",
+            "domain": ["PhaseA", "PhaseB", "PhaseC"]
+        },
+        "S3_East_Market": {
+            "description": "Signal at East Market",
+            "domain": ["PhaseB", "PhaseC"]
+        },
+        "S4_River_Bridge": {
+            "description": "Signal at River Bridge",
+            "domain": ["PhaseA", "PhaseC"]
+        },
+        "S5_City_Hospital": {
+            "description": "Signal at City Hospital",
+            "domain": ["PhaseB", "PhaseC"]
+        }
+    },
+    "constraints": [
+        {
+            "type": "inequality",
+            "name": "conflict_S1_S2",
+            "description": "S1 and S2 cannot have conflicting phases simultaneously",
+            "variables": ["S1_Central_Junction", "S2_North_Station"],
+            "relation": "!=",
+            "forbidden_pairs": [["PhaseA", "PhaseA"], ["PhaseB", "PhaseB"]]
+        },
+        {
+            "type": "inequality",
+            "name": "conflict_S1_S3",
+            "description": "S1 and S3 cannot have conflicting phases simultaneously",
+            "variables": ["S1_Central_Junction", "S3_East_Market"],
+            "relation": "!=",
+            "forbidden_pairs": [["PhaseB", "PhaseB"], ["PhaseC", "PhaseC"]]
+        },
+        {
+            "type": "coordination",
+            "name": "coordination_S2_S4",
+            "description": "S2 and S4 must coordinate phases",
+            "variables": ["S2_North_Station", "S4_River_Bridge"],
+            "allowed_pairs": [["PhaseA", "PhaseA"], ["PhaseC", "PhaseC"]]
+        },
+        {
+            "type": "precedence",
+            "name": "precedence_S1_S5",
+            "description": "S1 must precede S5 for corridor movement",
+            "variables": ["S1_Central_Junction", "S5_City_Hospital"],
+            "relation": "precedes"
+        },
+        {
+            "type": "emergency_priority",
+            "name": "emergency_S4_S5",
+            "description": "S4 to S5 gets emergency priority corridor",
+            "variables": ["S4_River_Bridge", "S5_City_Hospital"],
+            "priority": "emergency",
+            "required_assignment": {
+                "S4_River_Bridge": "PhaseA",
+                "S5_City_Hospital": "PhaseB"
+            }
+        }
+    ],
+    "emergency_scenarios": {
+        "hospital_corridor": {
+            "description": "Emergency corridor to City Hospital",
+            "required_signals": ["S1_Central_Junction", "S4_River_Bridge", "S5_City_Hospital"],
+            "preferred_phases": {
+                "S1_Central_Junction": "PhaseB",
+                "S4_River_Bridge": "PhaseA",
+                "S5_City_Hospital": "PhaseB"
+            }
+        }
+    }
+}
