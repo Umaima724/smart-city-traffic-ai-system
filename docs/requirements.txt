@@ -1,0 +1,12 @@
+# Smart City Traffic & Emergency Response AI System
+# Python Dependencies
+
+# Core dependencies
+numpy>=1.21.0          # For ANN matrix operations and feature vectors
+
+# Optional but recommended
+matplotlib>=3.5.0      # For plotting training curves (optional)
+networkx>=2.7.0        # For graph analysis and visualization (optional)
+
+# Development dependencies (optional)
+pytest>=7.0.0          # For unit testing (optional)
