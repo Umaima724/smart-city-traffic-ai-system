@@ -13,6 +13,7 @@ from src.modules.ann_priority import (
 from src.modules.logic_knowledge_base import LogicKnowledgeBase
 from src.modules.csp_scheduler import CSPScheduler
 from src.modules.search_navigation import SearchNavigationModule
+from src.modules.final_response import FinalResponseModule
 
 __all__ = [
     'InputPreprocessingModule',
@@ -22,5 +23,6 @@ __all__ = [
     'MultiClassPriorityMLP',
     'LogicKnowledgeBase',
     'CSPScheduler',
-    'SearchNavigationModule'
+    'SearchNavigationModule',
+    'FinalResponseModule'
 ]
