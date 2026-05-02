@@ -12,6 +12,7 @@ from src.modules.ann_priority import (
 )
 from src.modules.logic_knowledge_base import LogicKnowledgeBase
 from src.modules.csp_scheduler import CSPScheduler
+from src.modules.search_navigation import SearchNavigationModule
 
 __all__ = [
     'InputPreprocessingModule',
@@ -20,5 +21,6 @@ __all__ = [
     'BinaryPriorityClassifier',
     'MultiClassPriorityMLP',
     'LogicKnowledgeBase',
-    'CSPScheduler'
+    'CSPScheduler',
+    'SearchNavigationModule'
 ]
