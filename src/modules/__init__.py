@@ -10,11 +10,13 @@ from src.modules.ann_priority import (
     BinaryPriorityClassifier,
     MultiClassPriorityMLP
 )
+from src.modules.logic_knowledge_base import LogicKnowledgeBase
 
 __all__ = [
     'InputPreprocessingModule',
     'RequestRouter',
     'ANNPriorityModule',
     'BinaryPriorityClassifier',
-    'MultiClassPriorityMLP'
+    'MultiClassPriorityMLP',
+    'LogicKnowledgeBase'
 ]
