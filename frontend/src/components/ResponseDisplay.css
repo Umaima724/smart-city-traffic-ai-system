@@ -1,0 +1,145 @@
+.response-display h2 {
+    margin-bottom: 1.5rem;
+    color: #1e3c72;
+}
+
+.status-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid;
+    margin-bottom: 1.5rem;
+}
+
+.status-icon {
+    font-size: 2.5rem;
+}
+
+.status-banner h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.modules-used {
+    margin-bottom: 1.5rem;
+}
+
+.modules-used h4 {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.module-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.module-chip {
+    background: #e9ecef;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #495057;
+}
+
+.info-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #2a5298;
+}
+
+.info-card h4 {
+    margin-bottom: 0.8rem;
+    color: #333;
+}
+
+.priority-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.route-path {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.route-node {
+    background: #2a5298;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.route-arrow {
+    color: #666;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.route-stats {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.signals-list {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.signal-item {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+
+.signal-id {
+    font-weight: 600;
+    color: #333;
+}
+
+.signal-phase {
+    background: #ffc107;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.explanation-text {
+    white-space: pre-wrap;
+    font-family: inherit;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.priority-card {
+    border-left-color: #dc3545;
+}
+
+.route-card {
+    border-left-color: #28a745;
+}
+
+.control-card {
+    border-left-color: #fd7e14;
+}
+
+.explanation-card {
+    border-left-color: #6f42c1;
+}

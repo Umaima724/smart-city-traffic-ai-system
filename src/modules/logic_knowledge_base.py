@@ -63,6 +63,7 @@ from src.config import (
     SeverityLevel,
     PriorityLevel,
     ControlZone,
+     TimeSensitivity,
     TRAFFIC_RULES_PATH
 )
 from src.models.traffic_request import TrafficRequest
